@@ -15,12 +15,12 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true 
     },
     verified: {
-      type: Data.Types.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
     },
     answerType: {
-      type: STRING,
+      type: DataTypes.STRING,
       allowNull: false
     }
   });
