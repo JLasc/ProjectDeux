@@ -4,13 +4,9 @@
       <div class="card-stacked">
         <div class="card-content center">
             <div class="row">
-          <button class="waves-effect waves-light btn">Answer One</button>
-          <button class="waves-effect waves-light btn">Answer One</button>
-            </div>
-
-            <div class="row">
-          <button class="waves-effect waves-light btn">Answer One</button>
-          <button class="waves-effect waves-light btn">Answer One</button>
+              {{#each answer}}
+          <button class="waves-effect waves-light btn">{{this}}</button>
+            {{/each}}
           </div>
         </div>
       </div>

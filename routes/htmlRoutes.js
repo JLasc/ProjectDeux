@@ -1,7 +1,5 @@
 var db = require("../models");
 
-var newDb = require("../models/")
-
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
@@ -26,14 +24,27 @@ module.exports = function(app) {
     res.render("add")
   })
 
+  // Question View \\ 
   app.get('/question', function(req, res){
-    newDb.Question.findAll({}).then(function(question){
+    var answerArr = [];
+    db.Question.findAll({}).then(function(question){
       /* res.render("question") */
       res.render("question", {
-        question: question[0].text
+        question: question[0].text,
+        answer: answerArr
       })
 
-
+      // Answers for Question \\
+      db.Answer.findAll({
+        where: {
+          QuestionId: 2
+        }
+      }).then(function(answer){
+        for (i=0; i<answer.length; i++){
+          answerArr.push(answer[i].response)
+        }
+        console.log(answerArr.length)
+      })
     })
   });
 
