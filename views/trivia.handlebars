@@ -1,0 +1,30 @@
+<div class="jumbotron">
+  <h1 class="display-3">Trvia Game</h1>
+  <hr class="my-2">
+  <p>You will be asked 10 Questions. Each question is worth 10 points!</p>
+  <button type="button" id="start" class="btn btn-primary question">Start Game</button>
+</div>
+
+
+<div class="col s12 m7">
+  <h2 class="header"> {{question}} </h2>
+  <div class="card horizontal">
+    <div class="card-stacked">
+      <div class="card-content center">
+        <div class="row">
+          {{#each answer}}
+          <button class="waves-effect waves-light btn">{{this}}</button>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#start').on('click', function () {
+    console.log("test");
+    $.get("/api/question", function (data) {
+    });
+  })
+</script>

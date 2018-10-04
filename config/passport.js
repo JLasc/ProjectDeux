@@ -1,40 +1,22 @@
-module.exports = function (passport, user) {
-    var User = user;
-    var LocalStrategy = require('passport-local').Strategy;
-    passport.use('local-signup', new LocalStrategy(
-        {
-            usernameField: 'email',
-            passwordField: 'password',
-            passReqToCallback: true // allows us to pass back the entire request to the callback
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+module.exports = (passport) => {
+    console.log("googleauth");
+    passport.serializeUser((user, done) => {
+        done(null, user);
+    });
+    passport.deserializeUser((user, done) => {
+        done(null, user);
+    });
+    passport.use(new GoogleStrategy({
+            clientID: process.env.client_id,
+            clientSecret: process.env.secret_id,
+            callbackURL: process.env.callback_url
         },
-        function (req, email, done) {
-            User.findOne({
-                where: {
-                    email: email
-                }
-            }).then(function (user) {
-                if (user) {
-                    return done(null, false, {
-                        message: 'That email is already taken'
-                    });
-                } else {
-                    var data =
-                    {
-                        email: email,
-                        password: req.body.passpord,
-                        firstname: req.body.firstname,
-                        lastname: req.body.lastname
-                    };
-                    User.create(data).then(function (newUser, created) {
-                        if (!newUser) {
-                            return done(null, false);
-                        }
-                        if (newUser) {
-                            return done(null, newUser);
-                        }
-                    });
-                }
+        (token, refreshToken, profile, done) => {
+            return done(null, {
+                profile: profile,
+                token: token
             });
-        }
-    ));
-}
+        }));
+};

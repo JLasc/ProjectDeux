@@ -1,25 +1,39 @@
-require("dotenv").config();
 var express = require("express");
+require("dotenv").config();
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+//var auth = require('./config/passport');
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 4200;
+
 
 // Middleware
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
+app.use(express.static('public'));
+app.use(logger('dev'));
+app.use(cookieParser());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+//auth(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
-//app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-var env = require('dotenv').load();
-
-// Handlebars
+//Handlebars
 app.engine(
   "handlebars",
   exphbs({
@@ -28,9 +42,11 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
+
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+require("./routes/authroutes")(app,passport);
 
 var syncOptions = { force: false };
 
@@ -51,4 +67,3 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 
-module.exports = app;
