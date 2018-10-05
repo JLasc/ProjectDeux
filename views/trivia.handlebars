@@ -1,15 +1,12 @@
- <div class="col s12 m7">
-    <h2 class="header"> {{question}} </h2>
-    <div class="card horizontal">
-      <div class="card-stacked">
-        <div class="card-content center">
-            <div class="row">
-              {{#each answer}}
-          <button class="waves-effect waves-light btn">{{this}}</button>
-            {{/each}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="jumbotron">
+  <h3>Question: {{question}}</h3>
 
+  <br>
+  <p>
+    <h4>Please choose an answer:</h4>
+    {{#each answer}}
+    <button class="btn btn-primary">{{this}}</button>
+    {{/each}}
+  </p>
+
+</div>
