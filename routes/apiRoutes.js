@@ -32,12 +32,15 @@ module.exports = function (app) {
     res.json(res)
   });
 
+  app.post("/api/add", function (req, res) {
+    console.log(req.body);
+    db.Question.create(req.body).then(function (dbQuestion) {
+      res.json(dbQuestion);
+    });
+  });
 
 
-  // Add Question to API \\
-  app.post("/api/question", function (req, res) {
 
-  })
 
 
   // Question View \\ 

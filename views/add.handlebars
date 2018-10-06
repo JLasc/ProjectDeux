@@ -3,10 +3,19 @@
   <form id="qform">
     <div class="form-group">
       <label for="newQuestion">Question: </label>
-      <input type="text" class="form-control" id="newQuestion" placeholder="Please Enter Question">
+      <textarea class="form-control" id="newQuestion" rows="3" placeholder="Please Enter Question"></textarea>
     </div>
     <div class="form-group">
-      <label for="answer1">Answer</label>
+      <label for="category">Category</label>
+      <select class="form-control" id="category">
+        <option disabled selected value> -- select an option -- </option>
+        <option>History</option>
+        <option>Pop Culture</option>
+        <option>Movies</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="answer1">Correct Answer</label>
       <input type="text" class="form-control" id="answer1">
     </div>
     <div class="form-group">
@@ -34,25 +43,27 @@
     event.preventDefault();
 
     var qObj = {
-      question: $('#newQuestion').val().trim(),
-      answer1: $("#answer1").val().trim(),
-      answer2: $("#answer2").val().trim(),
-      answer3: $("#answer3").val().trim(),
-      answer4: $("#answer4").val().trim()
+      text: $('#newQuestion').val().trim(),
+      category: $('#category').val().trim(),
+      answerType: 'Multiple Choice'
+      //correct_answer1: $("#answer1").val().trim(),
+      //answer2: $("#answer2").val().trim(),
+      //answer3: $("#answer3").val().trim(),
+      //answer4: $("#answer4").val().trim()
     };
 
     $.ajax({
       type: "POST",
-      url: "/api/question",
+      url: "/api/add",
       data: qObj
     })
 
     console.log(qObj)
     question: $('#newQuestion').val("")
-    answer1: $("#answer1").val("")
-    answer2: $("#answer2").val("")
-    answer3: $("#answer3").val("")
-    answer4: $("#answer4").val("")
+    //answer1: $("#answer1").val("")
+    //answer2: $("#answer2").val("")
+    //answer3: $("#answer3").val("")
+    //answer4: $("#answer4").val("")
   })
 
 </script>
