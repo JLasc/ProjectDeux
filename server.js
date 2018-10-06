@@ -19,8 +19,6 @@ app.use(express.static("public"));
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-
-
 var env = require('dotenv').load();
 
 // Handlebars
@@ -56,3 +54,4 @@ db.sequelize.sync(syncOptions).then(function() {
 });
 
 module.exports = app;
+
