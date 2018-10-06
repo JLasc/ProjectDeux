@@ -12,9 +12,6 @@ module.exports = function (sequelize, DataTypes) {
         },
         correct : {
             type: DataTypes.BOOLEAN
-        },
-        verified: {
-            type: DataTypes.BOOLEAN
         }
     });
     Answer.associate = function(models) {

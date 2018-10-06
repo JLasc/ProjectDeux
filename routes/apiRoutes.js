@@ -1,31 +1,6 @@
 var db = require("../models");
 
 module.exports = function (app) {
-  // Get all examples
-  /*   app.get("/api/examples", function (req, res) {
-      db.Example.findAll({}).then(function (dbExamples) {
-        res.json(dbExamples);
-      });
-    });
-
-    // Create a new example
-    app.post("/api/examples", function (req, res) {
-      db.Example.create(req.body).then(function (dbExample) {
-        res.json(dbExample);
-      });
-    });
-
-    // Delete an example by id
-    app.delete("/api/examples/:id", function (req, res) {
-      db.Example.destroy({
-        where: {
-          id: req.params.id
-        }
-      }).then(function (dbExample) {
-        res.json(dbExample);
-      });
-    }); */
-
 
   //Get All Question in API\\
   app.get("/api/question", function (req, res) {
@@ -33,9 +8,16 @@ module.exports = function (app) {
   });
 
   app.post("/api/add", function (req, res) {
-    console.log(req.body);
     db.Question.create(req.body).then(function (dbQuestion) {
-      res.json(dbQuestion);
+      db.Answer.bulkCreate([
+        { response: 'barfooz', correct: true, QuestionId: dbQuestion.id },
+        { response: 'foo', correct: false, QuestionId: dbQuestion.id },
+        { response: 'bar', correct: false, QuestionId: dbQuestion.id }
+      ]).then(() => { // Notice: There are no arguments here, as of right now you'll have to...
+        return db.Answer.findAll();
+      }).then(Answer => {
+        console.log(Answer) // ... in order to get the array of user objects
+      })
     });
   });
 
@@ -53,7 +35,7 @@ module.exports = function (app) {
         answer: answerArr
       })
 
-      // Answers for Question \\
+      // Answers for Question \\n
       db.Answer.findAll({
         where: {
           QuestionId: 2
