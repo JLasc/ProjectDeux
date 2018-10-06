@@ -25,10 +25,8 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Question.associate = function(models) {
-    Question.belongsTo(models.Game, {
-      foreignKey: {
-        allowNull: false
-      }
+    Question.hasMany(models.Answer, {
+      as: 'Answers'
     });
   };
   return Question;

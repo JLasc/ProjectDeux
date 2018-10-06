@@ -9,6 +9,12 @@ module.exports = function (sequelize, DataTypes) {
             unique: true,
             primaryKey: true,
             autoIncrement: true
+        },
+        correct : {
+            type: DataTypes.BOOLEAN
+        },
+        verified: {
+            type: DataTypes.BOOLEAN
         }
     });
     Answer.associate = function(models) {
