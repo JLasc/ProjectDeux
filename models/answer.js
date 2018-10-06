@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
     var Answer = sequelize.define("Answer", {
         response: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.TEXT,
             allowNull: false
         },
         id: {
