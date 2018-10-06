@@ -18,7 +18,11 @@ module.exports = function (app) {
   })
 
   app.get("/trivia", function (req, res) {
-    res.render('trivia')
+    db.Question.findAll({}).then(function(data){
+      res.render('trivia', {
+        question: data[0].text
+      })
+    })
   })
 
 
