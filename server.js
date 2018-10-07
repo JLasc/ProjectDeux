@@ -2,8 +2,14 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
+// var server = require('http').createServer(app);
+// var io = require('socket.io').listen(server);
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+const authConfig = require("./config/auth");
+const authRoutes = require('./routes/authRoutes');
 
 var db = require("./models");
 
@@ -14,10 +20,15 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
-
-//app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(cookieParser());
+app.use(logger('dev'));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 var env = require('dotenv').load();
 
@@ -30,9 +41,13 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
+authConfig(passport);
+
+
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+authRoutes(app, passport);
 
 var syncOptions = { force: false };
 

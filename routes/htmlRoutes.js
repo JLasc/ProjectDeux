@@ -4,12 +4,12 @@ module.exports = function (app) {
 
 
   //Login Page
-  app.get("/", function (req, res) {
+  app.get("/login", function (req, res) {
     res.render('login');
   })
 
   //Trivia Page
-  app.get('/index', function (req, res) {
+  app.get('/', function (req, res) {
     res.render('index')
   })
 
@@ -27,7 +27,7 @@ module.exports = function (app) {
 
 
   // Render 404 page for any unmatched routes
-  app.get("*", function (req, res) {
-    res.render("404");
-  });
+  // app.get("*", function (req, res) {
+  //   res.render("404");
+  // });
 };
