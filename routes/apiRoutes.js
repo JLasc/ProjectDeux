@@ -7,25 +7,28 @@ module.exports = function (app) {
     res.json(res)
   });
 
-  app.post("/api/add", function (req, res) {
-    db.Question.create(req.body).then(function (dbQuestion) {
-      db.Answer.bulkCreate([
-        { response: 'barfooz', correct: true, QuestionId: dbQuestion.id },
-        { response: 'foo', correct: false, QuestionId: dbQuestion.id },
-        { response: 'bar', correct: false, QuestionId: dbQuestion.id }
-      ]).then(() => { // Notice: There are no arguments here, as of right now you'll have to...
-        return db.Answer.findAll();
-      }).then(Answer => {
-        console.log(Answer) // ... in order to get the array of user objects
+
+
+  app.post('/api/add', function(req, res) { 
+    var answers = JSON.parse(req.body.answers);
+    db.Question.create({
+      text: req.body.text,
+      category: req.body.category,
+      answerType: 'Multiple Choice',
+      verified: true,
+      Answers: answers
+    },
+    {
+      include: [db.Answer]
+    })
+    .then(function(data){
+      res.render("thanks",{
+        question: data.text
       })
-    });
+    })
   });
 
-
-
-
-
-  // Question View \\ 
+// Question View \\ 
   app.get('/question', function (req, res) {
     var answerArr = [];
     db.Question.findAll({}).then(function (question) {

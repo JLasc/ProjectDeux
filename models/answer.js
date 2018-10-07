@@ -4,12 +4,12 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false
         },
-        id: {
-            type: DataTypes.INTEGER,
-            unique: true,
-            primaryKey: true,
-            autoIncrement: true
-        },
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     unique: true,
+        //     primaryKey: true,
+        //     autoIncrement: true
+        // },
         correct : {
             type: DataTypes.BOOLEAN
         }
