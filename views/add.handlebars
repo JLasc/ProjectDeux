@@ -3,11 +3,11 @@
   <form id="qform">
     <div class="form-group">
       <label for="newQuestion">Question: </label>
-      <textarea class="form-control" id="newQuestion" rows="3" placeholder="Please Enter Question"></textarea>
+      <textarea class="form-control" id="newQuestion" rows="3" name="text" placeholder="Please Enter Question"></textarea>
     </div>
     <div class="form-group">
       <label for="category">Category</label>
-      <select class="form-control" id="category">
+      <select class="form-control" id="category" name="category">
         <option disabled selected value> -- select an option -- </option>
         <option>History</option>
         <option>Pop Culture</option>
@@ -16,19 +16,19 @@
     </div>
     <div class="form-group">
       <label for="answer1">Correct Answer</label>
-      <input type="text" class="form-control" id="answer1">
+      <input type="text" class="form-control answer" id="answer1" name="true">
     </div>
     <div class="form-group">
       <label for="answer2">Answer</label>
-      <input type="text" class="form-control" id="answer2">
+      <input type="text" class="form-control answer" id="answer2" name="false">
     </div>
     <div class="form-group">
       <label for="answer3">Answer</label>
-      <input type="text" class="form-control" id="answer3">
+      <input type="text" class="form-control answer" id="answer3" name="false">
     </div>
     <div class="form-group">
       <label for="answer4">Answer</label>
-      <input type="text" class="form-control" id="answer4">
+      <input type="text" class="form-control answer" id="answer4" name="false">
     </div>
     <button id='qbtn' class='btn btn-primary' type='submit'>Submit Question</button>
   </form>
@@ -41,30 +41,27 @@
 
   $("#qform").on("submit", function (event) {
     event.preventDefault();
+    var answers = $(".answer").serializeArray();
+    var parsed = answers.map(function (item) {
+      return {
+        correct: item.name,
+        response: item.value,
+      }
+    })
 
     var qObj = {
       text: $('#newQuestion').val().trim(),
       category: $('#category').val().trim(),
       answerType: 'Multiple Choice',
-      verfied: true
-      //correct_answer1: $("#answer1").val().trim(),
-      //answer2: $("#answer2").val().trim(),
-      //answer3: $("#answer3").val().trim(),
-      //answer4: $("#answer4").val().trim()
+      verfied: true,
+      answers: JSON.stringify(parsed)
     };
 
     $.ajax({
-      type: "POST",
+      method: "POST",
       url: "/api/add",
       data: qObj
     })
-
-    console.log(qObj)
-    question: $('#newQuestion').val("")
-    //answer1: $("#answer1").val("")
-    //answer2: $("#answer2").val("")
-    //answer3: $("#answer3").val("")
-    //answer4: $("#answer4").val("")
   })
 
 </script>

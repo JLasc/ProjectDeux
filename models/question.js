@@ -8,12 +8,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    id: {
-      type: DataTypes.INTEGER,
-      unique: true,
-      primaryKey: true,
-      autoIncrement: true 
-    },
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   unique: true,
+    //   primaryKey: true,
+    //   autoIncrement: true 
+    // },
     verified: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -25,9 +25,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Question.associate = function(models) {
-    Question.hasMany(models.Answer, {
-      as: 'Answers'
-    });
+    Question.hasMany(models.Answer);
   };
   return Question;
 };
