@@ -14,14 +14,14 @@ body {
 
 #opening_text {
   text-align:center;
-  margin-top:-360px;
+  margin-top:-320px;
   
 }
 
 h1{
   color:white;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 80px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 90px;
 }
 
 #button3 {
@@ -35,7 +35,6 @@ h1{
 }
 #button3:hover {
   background: rgb(42, 59, 95);
-  
   border-radius: 6px;
   text-decoration: none;
   color:orange;
@@ -47,8 +46,8 @@ h1{
 #burst-12 {
   background: rgb(42, 59, 95);
   color:white;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   position: relative;
   text-align: center;
   margin:250px auto 0 ;
@@ -61,8 +60,8 @@ h1{
   position: absolute;
   top: 0;
   left: 0;
-  height: 400px;
-  width: 400px;
+  height: 350px;
+  width: 350px;
   background: rgb(42, 59, 95);
   z-index:-1;
 }
@@ -73,5 +72,64 @@ h1{
 
 #burst-12:after {
   transform: rotate(60deg);
+}
+
+@media only screen and (max-width: 500px) {
+
+  #opening_text {
+    text-align:center;
+    margin-top:-200px;
+    
+  }
+  
+  h1{
+    color:white;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 50px;
+  }
+  
+  #button3 {
+    background:red;
+    padding:10px;
+    border-radius: 6px;
+    text-decoration: none;
+    color:white;
+    margin: 40px;
+    font-size: 20px;
+  }
+  #button3:hover {
+    background: rgb(42, 59, 95);
+    border-radius: 6px;
+    text-decoration: none;
+    color:orange;
+    margin: 40px;
+    font-size: 20px;
+    border:none;
+  }
+
+  #burst-12 {
+    width: 200px;
+    height: 200px;
+  }
+
+  #burst-12:before,
+  #burst-12:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 200px;
+    background: rgb(42, 59, 95);
+    z-index:-1;
+  }
+
+  #burst-12:before {
+    transform: rotate(30deg);
+  }
+
+  #burst-12:after {
+    transform: rotate(60deg);
+  }
 }
 
