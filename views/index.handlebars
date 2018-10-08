@@ -1,11 +1,56 @@
-<div class="jumbotron">
-    <h1 class='text-center'>Bootcamp Trivia</h1><br>
-    <p class='text-center'>
-        <a id="button1" type="submit" class="btn btn-danger" href="/trivia">Single Player</a>
-        <button id="button2" type="submit" class="btn btn-danger" value="Play Game" disabled>Multi Player(coming
-            soon...)</button>
-        <a href="/add" id="add" class="btn btn-danger">Add Question</a>
-    </p>
+
+    
+<div id="burst-12"></div>
+
+<div id="opening_text">
+    <h1>Game Room</h1>
+    <a href="/game" id="button3" type="submit" class="btn btn-danger" value="play">Play!</a>
 </div>
 
+<audio id="mysoundclip1" src="/styles/audio/S1_BE.wav"></audio>
+
+<script>
+    
+
+     var relativeOffset = anime.timeline({
+            autoplay: false
+    });
+
+    relativeOffset
+
+    .add({
+        targets: '#burst-12',
+        
+        rotate: [{ value: '360deg', duration: 1200 }],
+        easing: 'easeInOutSine',
+        begin: function () {
+                document.getElementById('mysoundclip1').play()
+            },
+        complete: function(){
+            $('#burst-12');
+        }
+    })
+
+    .add({
+        targets: '#burst-12',
+        offset: '-=500',
+        translateX: [{ value: 1000, duration: 2000 }],
+        //easing: 'easeInCirc',
+        begin: function(){
+            $('#opening_text').hide();
+        },
+        
+    })
+    
+    document.querySelector('.btn').onclick = relativeOffset.restart;
+
+</script>
+
+
+
+
+
+
+
+    
 

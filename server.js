@@ -30,6 +30,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.static(__dirname + '/public')); 
+
 var env = require('dotenv').load();
 
 // Handlebars

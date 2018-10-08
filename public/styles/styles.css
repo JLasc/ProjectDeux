@@ -1,3 +1,62 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+body {
+  background: url(../styles/images/sonic6.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+  background-position: center;
+  margin:0;
+  padding:0;
+}
+
+#opening_text {
+  text-align:center;
+  margin-top:-525px;
+}
+
+h1{
+  color:white;
+}
+
+#button3 {
+  background:red;
+  padding:15px;
+  border-radius: 6px;
+  text-decoration: none;
+  color:white;
+}
+
+#burst-12 {
+  background: rgb(42, 59, 95);
+  color:white;
+  width: 400px;
+  height: 400px;
+  position: relative;
+  text-align: center;
+  margin:250px auto;
+  z-index:-1;
+}
+
+#burst-12:before,
+#burst-12:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 400px;
+  width: 400px;
+  background: rgb(42, 59, 95);
+  z-index:-1;
+}
+
+#burst-12:before {
+  transform: rotate(30deg);
+}
+
+#burst-12:after {
+  transform: rotate(60deg);
+}
+

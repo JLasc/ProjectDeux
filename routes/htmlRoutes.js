@@ -8,7 +8,14 @@ module.exports = function (app) {
     res.render('login');
   })
 
-  //Trivia Page
+  // Trivia Page
+  app.get('/game', function (req, res) {
+    setTimeout(function() {
+      res.render('game')
+    }, 1000)
+  })
+
+  //Main Page
   app.get('/', function (req, res) {
     res.render('index')
   })
