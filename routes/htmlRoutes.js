@@ -37,7 +37,7 @@ module.exports = function (app) {
       console.log(data);
       res.render('trivia', {
         question: data[0].text,
-        answer: data[0].answers
+        answer: data[0].Answers
       })
     })
   })
