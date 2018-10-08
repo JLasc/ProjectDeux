@@ -30,8 +30,10 @@ module.exports = function (app) {
 
   app.get("/trivia", function (req, res) {
     db.Question.findAll({}).then(function(data){
+      console.log(data);
       res.render('trivia', {
-        question: data[0].text
+        question: data[0].text,
+        answer: data.answers
       })
     })
   })

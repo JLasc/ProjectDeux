@@ -7,10 +7,6 @@ module.exports = function (app) {
     res.json(res)
   });
 
-    
-
-
-
   app.post('/api/add', function(req, res) { 
     var answers = JSON.parse(req.body.answers);
     db.Question.create({
