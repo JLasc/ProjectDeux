@@ -24,6 +24,10 @@ module.exports = function (app) {
     res.render("add")
   })
 
+  app.get('/thanks', function (req, res){
+    res.render("thanks")
+  })
+
   app.get("/trivia", function (req, res) {
     db.Question.findAll({}).then(function(data){
       res.render('trivia', {
