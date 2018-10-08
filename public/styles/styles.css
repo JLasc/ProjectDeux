@@ -3,7 +3,7 @@
 }
 
 body {
-  background: url(../styles/images/sonic6.jpg);
+  background: url(../styles/images/bg_1.jpg);
   background-repeat: no-repeat;
   background-size:cover;
   background-attachment: fixed;
@@ -15,7 +15,7 @@ body {
 #opening_text {
   text-align:center;
   margin-top:-320px;
-  
+
 }
 
 h1{
@@ -41,20 +41,17 @@ h1{
   margin: 50px;
   font-size: 40px;
   border:none;
-  animation: rubberBand 4s infinite;
+  animation: rubberBand 2s infinite;
 }
 
 #burst-12 {
   background: rgb(42, 59, 95);
-  color:white;
   width: 350px;
   height: 350px;
   position: relative;
   text-align: center;
   margin:250px auto 0 ;
   z-index:-1;
-  animation: colorChange infinite 7s;
-  -webkit-animation: colorchange infinite ease-in-out 7s;
 }
 
 #burst-12:before,
@@ -67,18 +64,9 @@ h1{
   width: 350px;
   background: rgb(42, 59, 95);
   z-index:-1;
-  animation: colorChange infinite 7s;
-  -webkit-animation: colorchange infinite ease-in-out 7s;
 }
 
-@keyframes colorchange
-    {
-        0%   {background: rgb(51, 60, 70);}
-        25%  {background: #757B87;}
-        50%  {background: #00c0e4;}
-        75%  {background: #0174c0}
-        100% {background: #342343;}
-    } 
+
 
 #burst-12:before {
   transform: rotate(30deg);
