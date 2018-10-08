@@ -189,6 +189,7 @@
 .pulse {
   -webkit-animation-name: pulse;
   animation-name: pulse;
+  animation-duration: 3s;
 }
 
 @-webkit-keyframes rubberBand {
