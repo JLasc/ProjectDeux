@@ -29,11 +29,15 @@ module.exports = function (app) {
   })
 
   app.get("/trivia", function (req, res) {
-    db.Question.findAll({}).then(function(data){
+    db.Question.findAll({
+      include: [{
+        model: db.Answer
+      }],
+    }).then(function(data){
       console.log(data);
       res.render('trivia', {
         question: data[0].text,
-        answer: data.answers
+        answer: data[0].answers
       })
     })
   })
