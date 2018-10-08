@@ -11,6 +11,13 @@
 
 <script>
 
+    $(document).on('click', '#button3', function() {
+
+        setTimeout(function() {
+            $('#burst-12').hide();
+        }, 900)
+    })
+
     function begin () {
         $('#opening_text').addClass('animated bounceInDown');
     }
@@ -30,9 +37,7 @@
         begin: function () {
                 document.getElementById('mysoundclip1').play()
             },
-        complete: function(){
-            $('#burst-12');
-        }
+        
     })
 
     .add({

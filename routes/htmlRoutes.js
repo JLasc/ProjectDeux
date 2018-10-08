@@ -12,7 +12,7 @@ module.exports = function (app) {
   app.get('/game', function (req, res) {
     setTimeout(function() {
       res.render('game')
-    }, 1000)
+    }, 1200)
   })
 
   //Main Page
