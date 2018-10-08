@@ -35,10 +35,10 @@ module.exports = function (app) {
       }],
     }).then(function(data){
       console.log(data);
-      console.log(data[0].Answers)
+      console.log(data[1].Answers)
       res.render('trivia', {
-        question: data[0].text,
-        answer: data[0].Answers
+        question: data[1].text,
+        answer: data[1].Answers
       })
     })
   })
