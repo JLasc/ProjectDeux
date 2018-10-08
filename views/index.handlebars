@@ -1,5 +1,3 @@
-
-    
 <div id="burst-12"></div>
 
 <div id="opening_text">
@@ -11,66 +9,57 @@
 
 <script>
 
-    $(document).on('click', '#button3', function() {
-        // burst-12 animation disappers after 900ms
-        setTimeout(function() {
+    $(document).on('click', '#button3', function () {
+        // burst-12 animation disappers after 900ms when button clicked
+        setTimeout(function () {
             $('#burst-12').hide();
-        }, 900)
+        }, 1200)
         // removes pulse animation in order for anime.js animation to begin
         $('#burst-12').removeClass('animated pulse infinite');
     })
 
-    function begin () {
+    function begin() {
         // opening text drops down and burst-12 pulses when page loads
         $('#opening_text').addClass('animated bounceInDown');
         $('#burst-12').addClass('animated pulse infinite');
+        $('#button3').addClass('animated pulse infinite');
     }
     // call begin function
     begin();
 
     // this allows animation offsets
-     var relativeOffset = anime.timeline({
-            autoplay: false
+    var relativeOffset = anime.timeline({
+        // animation waits for button click, otherwise it would start when page loads
+        autoplay: false
     });
 
     relativeOffset
 
-    .add({
-        // targets which element to animate
-        targets: '#burst-12',
-        // this controls rotation animation
-        rotate: [{ value: '360deg', duration: 1200 }],
-        // easing of rotation
-        easing: 'easeInOutSine',
-        // sound clip is played when button clicked
-        begin: function () {
+        .add({
+            // targets which element to animate
+            targets: '#burst-12',
+            // rotation animation controller
+            rotate: [{ value: '360deg', duration: 1300 }],
+            // easing of rotation
+            easing: 'easeInOutSine',
+            // sound clip plays when button clicked
+            begin: function () {
                 document.getElementById('mysoundclip1').play()
             },
-        
-    })
+        })
 
-    .add({
-        targets: '#burst-12',
-        // animation starts 500ms before the previous animation ends
-        offset: '-=500',
-        // moves to the right for 2000ms
-        translateX: [{ value: 1700, duration: 2000 }],
-        // hides opening text when this animation begins
-        begin: function(){
-            $('#opening_text').hide();
-        },
-        
-    })
+        .add({
+            targets: '#burst-12',
+            // animation starts 500ms before the previous animation ends
+            offset: '-=500',
+            // moves to the right for 2000ms
+            translateX: [{ value: 1700, duration: 4000 }],
+            // hides opening text when this animation begins
+            begin: function () {
+                $('#opening_text').hide();
+            },
+        })
     // contols anime.js button click animation
     document.querySelector('.btn').onclick = relativeOffset.restart;
 
 </script>
-
-
-
-
-
-
-
-    
-
