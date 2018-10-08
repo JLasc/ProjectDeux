@@ -3,14 +3,18 @@
 <div id="burst-12"></div>
 
 <div id="opening_text">
-    <h1>Game Room</h1>
-    <a href="/game" id="button3" type="submit" class="btn btn-danger" value="play">Play!</a>
+    <h1>OSG</h1>
+    <a href="/game" id="button3" type="submit" class="btn btn-danger" value="play">Enter</a>
 </div>
 
 <audio id="mysoundclip1" src="/styles/audio/S1_BE.wav"></audio>
 
 <script>
-    
+
+    function begin () {
+        $('#opening_text').addClass('animated bounceInDown');
+    }
+    begin();
 
      var relativeOffset = anime.timeline({
             autoplay: false

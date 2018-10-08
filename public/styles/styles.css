@@ -14,19 +14,34 @@ body {
 
 #opening_text {
   text-align:center;
-  margin-top:-525px;
+  margin-top:-360px;
+  
 }
 
 h1{
   color:white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 80px;
 }
 
 #button3 {
   background:red;
-  padding:15px;
+  padding:20px;
   border-radius: 6px;
   text-decoration: none;
   color:white;
+  margin: 50px;
+  font-size: 30px;
+}
+#button3:hover {
+  background: rgb(42, 59, 95);
+  
+  border-radius: 6px;
+  text-decoration: none;
+  color:orange;
+  margin: 50px;
+  font-size: 30px;
+  border:none;
 }
 
 #burst-12 {
@@ -36,7 +51,7 @@ h1{
   height: 400px;
   position: relative;
   text-align: center;
-  margin:250px auto;
+  margin:250px auto 0 ;
   z-index:-1;
 }
 
