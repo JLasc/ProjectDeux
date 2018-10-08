@@ -12,6 +12,7 @@
         <option>History</option>
         <option>Pop Culture</option>
         <option>Movies</option>
+        <option>Sports</option>
       </select>
     </div>
     <div class="form-group">
@@ -61,6 +62,8 @@
       method: "POST",
       url: "/api/add",
       data: qObj
+    }).then(function(data){
+      window.location = "/thanks"
     })
   })
 

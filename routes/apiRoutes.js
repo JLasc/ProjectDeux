@@ -22,9 +22,7 @@ module.exports = function (app) {
       include: [db.Answer]
     })
     .then(function(data){
-      res.render("thanks",{
-        question: data.text
-      })
+      res.send(data);
     })
   });
 
