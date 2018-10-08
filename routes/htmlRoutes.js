@@ -8,6 +8,10 @@ module.exports = function (app) {
     res.render('login');
   })
 
+  app.get('/thanks', function (req, res){
+    res.render("thanks")
+  })
+
   //Trivia Page
   app.get('/', function (req, res) {
     res.render('index')
