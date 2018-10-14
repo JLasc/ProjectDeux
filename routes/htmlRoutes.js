@@ -34,10 +34,10 @@ module.exports = function (app) {
         model: db.Answer
       }],
     }).then(function(data){
-      console.log(data[1].Answers.response)
+      console.log(data[1].Answers)
       res.render('trivia', {
         question: data[1].text,
-        answer: data[1].Answers.response
+        answer: data[1].Answers
       })
     })
   })
