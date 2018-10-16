@@ -4,7 +4,11 @@
 
 ## Visit live on heroku
 
- * [OSG(https://guarded-brook-39649.herokuapp.com/)
+ * [OSG](https://guarded-brook-39649.herokuapp.com/)
+
+## Demo Videos
+
+ *  * ![](public/styles/images/OSG.gif?raw=true)
 
  
 ## Technologies Used
@@ -31,7 +35,9 @@
 
 ## Authors
 
- * **Gregory Row** - *Initial work* - [rowgregory](https://github.com/rowgregory)
+* **Gregory Row** - *Initial work* - [gitHub](https://github.com/rowgregory)
+* **Jacob Lehoux** - *Initial work* - [gitHub](https://github.com/jalehoux)
+* **Jonathan Lascaze** - *Initial work* - [gitHub](https://github.com/JLasc)
 
 ## License
 
