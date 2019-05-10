@@ -35,9 +35,9 @@
 
 ## Authors
 
-* **Gregory Row** - *Initial work* - [gitHub](https://github.com/rowgregory)
-* **Jacob Lehoux** - *Initial work* - [gitHub](https://github.com/jalehoux)
-* **Jonathan Lascaze** - *Initial work* - [gitHub](https://github.com/JLasc)
+* **Gregory R** - *Initial work* - [gitHub](https://github.com/rowgregory)
+* **Jacob L** - *Initial work* - [gitHub](https://github.com/jalehoux)
+* **Jon L** - *Initial work* - [gitHub](https://github.com/JLasc)
 
 ## License
 
